@@ -21,6 +21,7 @@ set_target_properties(
 
 add_executable(boids
         "${PROJECT_SOURCE_DIR}/src/main.cpp"
+        "${PROJECT_SOURCE_DIR}/src/boid.cpp"
 )
 
 target_link_libraries(boids PRIVATE raylib::raylib)
