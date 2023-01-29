@@ -1,7 +1,7 @@
 #include "../include/boid.hpp"
 
-float const Boid::maximum_velocity = 2;
-float const Boid::maximum_acceleration = 0.005F;
+float const Boid::maximum_velocity = 2.5;
+float const Boid::maximum_acceleration = 0.01;
 
 Boid::Boid() : Boid(Vec2::Zero(), Vec2::One().Normalize(), Vec2::Zero()) {
 }
@@ -53,7 +53,8 @@ void Boid::update(std::vector<std::shared_ptr<Boid>> const &visibleBoids) {
         avgSeparation /= visibleBoids.size();
     }
 
-    Vec2 steeringAccel = Vec2::Zero().Add(avgVelocity);
+    Vec2 steeringAccel = Vec2::Zero().Add(avgPosition - position).Add(avgVelocity);
+    steeringAccel -= velocity;
 
     if (steeringAccel.Length() > maximum_acceleration) {
         steeringAccel = steeringAccel.Normalize() * maximum_acceleration;
