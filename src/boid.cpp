@@ -40,7 +40,7 @@ void Boid::draw() {
     imgCentre *= scale;
 
     //! Taking rotation against {0, 1} normalizes the coordinates to a regular Cartesian Quadrant
-    rotation = velocity.Angle(Vec2{0, 1});
+    rotation = velocity.Angle(Vec2{0, 0}.Normalize()) + PI;
 
     boid_texture.Draw(position + (imgCentre - imgCentre.Rotate(rotation)), (rotation / PI) * 180, scale, WHITE);
 
