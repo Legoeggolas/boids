@@ -16,6 +16,7 @@ class Boid {
 
     static float const maximum_velocity;
     static float const maximum_acceleration;
+
     raylib::Texture boid_texture;
     float rotation;
 
@@ -25,6 +26,9 @@ class Boid {
 
     void draw();
     void update(std::vector<std::shared_ptr<Boid>> const &visibleBoids);
+
+   private:
+    void calculateRotation();
 };
 
 #endif
