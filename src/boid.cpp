@@ -20,21 +20,6 @@ Boid::Boid(Vec2 _pos, Vec2 _vel, Vec2 _accel) {
 }
 
 void Boid::draw() {
-    /*
-    float const hypotenuse = 200;
-
-    Vec2 reverseDir = velocity.Normalize().Negate();
-    Vec2 hypotA = (position + (reverseDir.Rotate(PI / 12) * hypotenuse));
-    Vec2 hypotB = (position + (reverseDir.Rotate(-PI / 12) * hypotenuse));
-
-    auto const lineColor = raylib::Color::Black();
-
-
-    position.DrawLine(hypotA, 20, lineColor);
-    position.DrawLine(hypotB, 20, lineColor);
-    hypotA.DrawLine(hypotB, 20, lineColor);
-    */
-
     float scale = 0.05F;
     Vec2 imgCentre{215, 583};
     imgCentre *= scale;
@@ -43,6 +28,4 @@ void Boid::draw() {
     rotation = velocity.Angle(Vec2{0, 0}.Normalize()) + PI;
 
     boid_texture.Draw(position + (imgCentre - imgCentre.Rotate(rotation)), (rotation / PI) * 180, scale, WHITE);
-
-    // rotation += PI / 60;
 }
